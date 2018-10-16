@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Dodia&#39;s Blog</title>
-    <link>https://dodiadodia.github.io/</link>
-    <description>Recent content on Dodia&#39;s Blog</description>
+    <title>Badger on Dodia&#39;s Blog</title>
+    <link>https://dodiadodia.github.io/tags/badger/</link>
+    <description>Recent content in Badger on Dodia&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh_CN</language>
     <copyright>All rights reserved - 2018</copyright>
     <lastBuildDate>Tue, 16 Oct 2018 11:12:14 +0800</lastBuildDate>
     
-	<atom:link href="https://dodiadodia.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://dodiadodia.github.io/tags/badger/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
