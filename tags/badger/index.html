@@ -192,11 +192,7 @@
     </header>
     <section class="post-excerpt">
         
-            <p><h1 id="badger-一个纯go编写的高速kv存储">Badger: 一个纯Go编写的高速KV存储</h1>
-
-<p>最近我们使用纯Go语言编写了一套基于LSM Tree的KV存储数据库，能够实现高效的数据存取以及支持持久化。这个数据库主要基于这篇论文：<a href="https://www.usenix.org/system/files/conference/fast16/fast16-papers-lu.pdf">WiscKey paper included in USENIX FAST 2016</a>。这种设计基于SSD进行高度优化，同时将key和value进行拆分存储来最大程度的降低IO的写放大，一并提升SSD的顺序和随机读写性能，我们将它命名为badger。在随机读性能方面，Badger至少是RocksDB 3.5倍的性能。在128B到16KB块大小的数据加载方面，Badger比RocksDB快了0.86-14倍，随着块大小的增加，Badger的性能增加尤为明显。在另一方面，虽然现在Badger在key-value的区间迭代性能方面还有不足，但是还有很大的优化空间。</p>
-
-<p></p> <a class="read-more" href="https://dodiadodia.github.io/post/badger/">&raquo;</a></p>
+            <p>Badger: 一个纯Go编写的高速KV存储 最近我们使用纯Go语言编写了一套基于LSM Tree的KV存储数据库，能够实现高效的数据存取以及支持持久化。这个 <a class="read-more" href="https://dodiadodia.github.io/post/badger/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
