@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://dodiadodia.github.io/post/certbot/</loc>
+    <lastmod>2020-03-15T21:38:17+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://dodiadodia.github.io/post/badger/</loc>
     <lastmod>2018-10-16T11:12:14+08:00</lastmod>
   </url>
@@ -20,7 +25,7 @@
   
   <url>
     <loc>https://dodiadodia.github.io/</loc>
-    <lastmod>2018-10-16T11:12:14+08:00</lastmod>
+    <lastmod>2020-03-15T21:38:17+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -32,7 +37,7 @@
   
   <url>
     <loc>https://dodiadodia.github.io/post/</loc>
-    <lastmod>2018-10-16T11:12:14+08:00</lastmod>
+    <lastmod>2020-03-15T21:38:17+08:00</lastmod>
     <priority>0</priority>
   </url>
   

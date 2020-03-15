@@ -6,11 +6,20 @@
     <description>Recent content on Dodia&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh_CN</language>
-    <copyright>All rights reserved - 2018</copyright>
-    <lastBuildDate>Tue, 16 Oct 2018 11:12:14 +0800</lastBuildDate>
+    <copyright>All rights reserved - 2020</copyright>
+    <lastBuildDate>Sun, 15 Mar 2020 21:38:17 +0800</lastBuildDate>
     
 	<atom:link href="https://dodiadodia.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Certbot</title>
+      <link>https://dodiadodia.github.io/post/certbot/</link>
+      <pubDate>Sun, 15 Mar 2020 21:38:17 +0800</pubDate>
+      
+      <guid>https://dodiadodia.github.io/post/certbot/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Badger Introduction</title>
