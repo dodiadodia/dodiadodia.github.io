@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Dodia&#39;s Blog</title>
-    <link>https://dodiadodia.github.io/post/</link>
-    <description>Recent content in Posts on Dodia&#39;s Blog</description>
+    <title>Cerbot on Dodia&#39;s Blog</title>
+    <link>https://dodiadodia.github.io/tags/cerbot/</link>
+    <description>Recent content in Cerbot on Dodia&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh_CN</language>
     <copyright>All rights reserved - 2020</copyright>
     <lastBuildDate>Sun, 15 Mar 2020 21:38:17 +0800</lastBuildDate>
     
-	<atom:link href="https://dodiadodia.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://dodiadodia.github.io/tags/cerbot/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,15 +19,6 @@
       
       <guid>https://dodiadodia.github.io/post/certbot/</guid>
       <description>使用Certbot给网站申请通配符SSL证书 背景 最近在给组内多个k8s集群维护内部的ingress service，很多对外提供的https i</description>
-    </item>
-    
-    <item>
-      <title>Badger Introduction</title>
-      <link>https://dodiadodia.github.io/post/badger/</link>
-      <pubDate>Tue, 16 Oct 2018 11:12:14 +0800</pubDate>
-      
-      <guid>https://dodiadodia.github.io/post/badger/</guid>
-      <description>Badger: 一个纯Go编写的高速KV存储 最近我们使用纯Go语言编写了一套基于LSM Tree的KV存储数据库，能够实现高效的数据存取以及支持持久化。这个</description>
     </item>
     
   </channel>

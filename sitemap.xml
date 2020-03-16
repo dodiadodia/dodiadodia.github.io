@@ -24,6 +24,12 @@
   </url>
   
   <url>
+    <loc>https://dodiadodia.github.io/tags/cerbot/</loc>
+    <lastmod>2020-03-15T21:38:17+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://dodiadodia.github.io/</loc>
     <lastmod>2020-03-15T21:38:17+08:00</lastmod>
     <priority>0</priority>
@@ -37,6 +43,12 @@
   
   <url>
     <loc>https://dodiadodia.github.io/post/</loc>
+    <lastmod>2020-03-15T21:38:17+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dodiadodia.github.io/tags/ssl/</loc>
     <lastmod>2020-03-15T21:38:17+08:00</lastmod>
     <priority>0</priority>
   </url>

@@ -34,12 +34,16 @@
     <meta property="article:published_time" content="2020-03-15T21:38:17&#43;08:00" />
 
     
+    <meta property="article:tag" content="cerbot" />
+    
+    <meta property="article:tag" content="ssl" />
+    
     
 
     <title>Certbot &middot; Dodia&#39;s Blog</title>
 
     
-    <meta name="description" content="" />
+    <meta name="description" content="使用Certbot给网站申请通配符SSL证书 背景 最近在给组内多个k8s集群维护内部的ingress service，很多对外提供的https i" />
     
 
     <meta name="HandheldFriendly" content="True" />
@@ -106,8 +110,8 @@
     },
     "headline": Certbot,
     "name": Certbot,
-    "wordCount": 0,
-    "timeRequired": "PT0M",
+    "wordCount": 730,
+    "timeRequired": "PT2M",
     "inLanguage": {
       "@type": "Language",
       "alternateName": en
@@ -116,7 +120,7 @@
     "datePublished": 2020-03-15T21:38Z,
     "dateModified": 2020-03-15T21:38Z,
     
-    
+    "keywords": cerbot, ssl,
     "description": ,
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -200,11 +204,68 @@
           </time>
         
          
+          <span class="post-tag small"><a href="https://dodiadodia.github.io//tags/cerbot/">#cerbot</a></span>
+         
+          <span class="post-tag small"><a href="https://dodiadodia.github.io//tags/ssl/">#ssl</a></span>
+         
         </section>
     </header>
 
     <section class="post-content">
       
+
+<h1 id="使用certbot给网站申请通配符ssl证书">使用Certbot给网站申请通配符SSL证书</h1>
+
+<h2 id="背景">背景</h2>
+
+<p>最近在给组内多个k8s集群维护内部的ingress service，很多对外提供的https ingress服务都需要SSL证书，因此准备使用Let’s Encrypt的服务来申请SSL证书</p>
+
+<h2 id="介绍">介绍</h2>
+
+<p>2018年3月14日，Let’s Encrypt对外宣布ACME v2 已正式支持通配符证书。这就意外味着用户可以在 Let’s Encrypt 上免费申请支持通配符的 SSL 证书。</p>
+
+<p>ACME v2 是 ACME 协议的更新版本，通配符证书只能通过 ACME v2 获得。要使用 ACME v2 协议申请通配符证书，只需一个支持该协议的客户端就可以了，官方推荐的客户端是 Certbot。</p>
+
+<h2 id="mac获取certbot">Mac获取Certbot</h2>
+
+<p>Mac上获取Certbot很简单，直接brew就可以</p>
+
+<p><code>brew install certbot</code></p>
+
+<p>Linux平台获取Certbot</p>
+
+<p><code>wget https://dl.eff.org/certbot-auto</code></p>
+
+<h2 id="申请证书">申请证书</h2>
+
+<p>首先登录您的dns域名网站，准备好修改相关事宜</p>
+
+<p>在申请Let’s Encrypt 证书的时候，需要校验域名的所有权，证明操作者有权利为该域名申请证书，目前支持三种验证方式：</p>
+
+<ul>
+<li>dns-01：给域名添加一个 DNS TXT 记录。</li>
+<li>http-01：在域名对应的 Web 服务器下放置一个 HTTP well-known URL 资源文件。</li>
+<li>tls-sni-01：在域名对应的 Web 服务器下放置一个 HTTPS well-known URL 资源文件。
+&gt; 通配符证书的申请，只能用上面的dns-01方式</li>
+</ul>
+
+<p>例如我需要申请*.prod.thinkhcp.cloud的证书，需要使用下面的命令</p>
+
+<p><code>./certbot-auto certonly  -d &quot;*.prod.thinkhcp.cloud&quot; --manual --preferred-challenges dns-01  --server https://acme-v02.api.letsencrypt.org/directory</code></p>
+
+<blockquote>
+<p>参数说明<br>
+certonly表示插件<br>
+-d 表示需要申请的通配符域名<br>
+&ndash;perferred-challenges 表示使用dns-01方式申请，使用dns的txt校验方式验证<br>
+&ndash;server 需要使用的acme v2版本，需要显示指定</p>
+</blockquote>
+
+<p>执行命令后，会需要输入邮箱和一些确认信息，然后根据提示的DNS TXT信息更新DNS服务的txt，等待20分钟左右，再确认即可</p>
+
+<p>确认过程可以使用dig相关命令<br>
+<code>dig -t txt _acme-challenge.prod.thinkhcp.cloud @8.8.8.8</code></p>
+
     </section>
 
 
