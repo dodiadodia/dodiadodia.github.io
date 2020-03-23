@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kubectl on Dodia&#39;s Blog</title>
+    <link>https://dodiadodia.github.io/tags/kubectl/</link>
+    <description>Recent content in Kubectl on Dodia&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh_CN</language>
+    <copyright>All rights reserved - 2020</copyright>
+    <lastBuildDate>Fri, 20 Mar 2020 16:44:40 +0800</lastBuildDate>
+    
+	<atom:link href="https://dodiadodia.github.io/tags/kubectl/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Kube Plugin</title>
+      <link>https://dodiadodia.github.io/post/kube-plugin/</link>
+      <pubDate>Fri, 20 Mar 2020 16:44:40 +0800</pubDate>
+      
+      <guid>https://dodiadodia.github.io/post/kube-plugin/</guid>
+      <description>Kubectl几个比较有用的插件分享 介绍 kubectl命令支持插件扩展，具体介绍可以参考下面的链接 https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/ kubectl的plugin就是一个可执</description>
+    </item>
+    
+  </channel>
+</rss>

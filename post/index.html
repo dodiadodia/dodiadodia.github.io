@@ -192,16 +192,7 @@
     </header>
     <section class="post-excerpt">
         
-            <p>Kubectl几个比较有用的插件分享 介绍 kubectl命令支持插件扩展，具体介绍可以参考下面的链接
-https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/
-kubectl的plugin就是一个可执行文件，以kubectl-*方式命令，放置在PATH路径中，kubectl plugin list的时候就会在PATH路径下递归寻找相应的kubect-*文件，作为其plugin输出。
-github上的这个项目https://github.com/ishantanu/awesome-kubectl-plugins 分享了很多kubectl的plugin，我试用了其中的几个，现在把我觉得有用的几个plugin记录一下
-kubectl krew介绍 kubectl krew是第一个介绍的，其实他就是一个plugin的管理器，和mac上的brew类似，用于管理kubectl插件的，其github地址如下https://github.com/kubernetes-sigs/krew
-直接使用下面的代码安装kubectl
-( set -x; cd &quot;$(mktemp -d)&quot; &amp;&amp; curl -fsSLO &quot;https://github.com/kubernetes-sigs/krew/releases/latest/download/krew.{tar.gz,yaml}&quot; &amp;&amp; tar zxvf krew.tar.gz &amp;&amp; KREW=./krew-&quot;$(uname | tr '[:upper:]' '[:lower:]')_amd64&quot; &amp;&amp; &quot;$KREW&quot; install --manifest=krew.yaml --archive=krew.tar.gz &amp;&amp; &quot;$KREW&quot; update )  然后把kubectl-krew的执行命令所在位置添加到PATH目录，如下
-export PATH=&quot;${KREW_ROOT:-$HOME/.krew}/bin:$PATH&quot;  其实上面的工作很简单，就是从github的release上下载kubectl-krew的压缩包并解压，然后放置到PATH目录中。这样执行kubectl krew的时候就等于是执行kubectl-krew了，kubectl-krew内部记录了索引，会对plugin的整个生命周期进行管理，比如list search install uninstall等等操作，和brew的理念完全一致。然后通过kubectl krew install就可以安装需要的插件了（有些插件krew安装的版本比github上还新，有些不太理解）
-下面罗列出一些使用示例：
-[root@dodia1 ~]# kubectl krew list PLUGIN VERSION krew v0.3.4  [root@dodia1 ~]# kubectl krew search debug NAME DESCRIPTION INSTALLED debug Attach ephemeral debug container to running pod no debug-shell Create pod with interactive kube-shell. <a class="read-more" href="https://dodiadodia.github.io/post/kube-plugin/">&raquo;</a></p>
+            <p>Kubectl几个比较有用的插件分享 介绍 kubectl命令支持插件扩展，具体介绍可以参考下面的链接 https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/ kubectl的plugin就是一个可执 <a class="read-more" href="https://dodiadodia.github.io/post/kube-plugin/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -220,6 +211,12 @@ export PATH=&quot;${KREW_ROOT:-$HOME/.krew}/bin:$PATH&quot;  其实上面的工�
                  
         
 
+        on
+            
+                <a href="https://dodiadodia.github.io//tags/kubectl/">#kubectl</a>,
+            
+                <a href="https://dodiadodia.github.io//tags/kubernetes/">#kubernetes</a>,
+            
         
         <time class="post-date" datetime="2020-03-20T16:44:40&#43;08:00">
             20 Mar 2020
