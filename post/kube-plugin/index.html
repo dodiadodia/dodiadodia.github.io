@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="Kube Plugin"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@tangwenjun"/>
+
+
+
+  	<meta property="og:title" content="Kube Plugin &middot; Dodia&#39;s Blog" />
+  	<meta property="og:site_name" content="Dodia&#39;s Blog" />
+  	<meta property="og:url" content="https://dodiadodia.github.io/post/kube-plugin/" />
+
+    
+        
+            <meta property="og:image" content="/images/screen.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2020-03-20T16:44:40&#43;08:00" />
+
+    
+    
+
+    <title>Kube Plugin &middot; Dodia&#39;s Blog</title>
+
+    
+    <meta name="description" content="Kubectl几个比较有用的插件分享 介绍 kubectl命令支持插件扩展，具体介绍可以参考下面的链接
+https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/
+kubectl的plugin就是一个可执行文件，以kubectl-*方式命令，放置在P" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://dodiadodia.github.io/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://dodiadodia.github.io/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://dodiadodia.github.io/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://dodiadodia.github.io/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+        <link href="http://feeds.feedburner.com/..." rel="alternate" type="application/rss+xml" title="Dodia&#39;s Blog" />
+    
+    <meta name="generator" content="Hugo 0.49" />
+
+    <link rel="canonical" href="https://dodiadodia.github.io/post/kube-plugin/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": ,
+        "logo": https://dodiadodia.github.io/images/logo.png
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": https://dodiadodia.github.io/images/logo.png,
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": https://dodiadodia.github.io,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ],
+        "description": Dodia&#39;s Bio
+        
+    },
+    "headline": Kube Plugin,
+    "name": Kube Plugin,
+    "wordCount": 345,
+    "timeRequired": "PT2M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": https://dodiadodia.github.io/post/kube-plugin/,
+    "datePublished": 2020-03-20T16:44Z,
+    "dateModified": 2020-03-20T16:44Z,
+    
+    
+    "description": ,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": https://dodiadodia.github.io/post/kube-plugin/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-79101-12', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="http://feeds.feedburner.com/...">Subscribe</a> </div>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="https://dodiadodia.github.io/"><img src="https://dodiadodia.github.io/images/logo.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button icon-feed" href="https://dodiadodia.github.io/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Kube Plugin</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2020-03-20T16:44:40&#43;08:00">
+            Mar 20, 2020
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<h1 id="kubectl几个比较有用的插件分享">Kubectl几个比较有用的插件分享</h1>
+
+<h2 id="介绍">介绍</h2>
+
+<p>kubectl命令支持插件扩展，具体介绍可以参考下面的链接</p>
+
+<p><a href="https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/">https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/</a></p>
+
+<p>kubectl的plugin就是一个可执行文件，以kubectl-*方式命令，放置在PATH路径中，kubectl plugin list的时候就会在PATH路径下递归寻找相应的kubect-*文件，作为其plugin输出。</p>
+
+<p>github上的这个项目<a href="https://github.com/ishantanu/awesome-kubectl-plugins">https://github.com/ishantanu/awesome-kubectl-plugins</a> 分享了很多kubectl的plugin，我试用了其中的几个，现在把我觉得有用的几个plugin记录一下</p>
+
+<h2 id="kubectl-krew介绍">kubectl krew介绍</h2>
+
+<p>kubectl krew是第一个介绍的，其实他就是一个plugin的管理器，和mac上的brew类似，用于管理kubectl插件的，其github地址如下<a href="https://github.com/kubernetes-sigs/krew">https://github.com/kubernetes-sigs/krew</a></p>
+
+<p>直接使用下面的代码安装kubectl</p>
+
+<pre><code class="language-sh">(
+  set -x; cd &quot;$(mktemp -d)&quot; &amp;&amp;
+  curl -fsSLO &quot;https://github.com/kubernetes-sigs/krew/releases/latest/download/krew.{tar.gz,yaml}&quot; &amp;&amp;
+  tar zxvf krew.tar.gz &amp;&amp;
+  KREW=./krew-&quot;$(uname | tr '[:upper:]' '[:lower:]')_amd64&quot; &amp;&amp;
+  &quot;$KREW&quot; install --manifest=krew.yaml --archive=krew.tar.gz &amp;&amp;
+  &quot;$KREW&quot; update
+)
+</code></pre>
+
+<p>然后把kubectl-krew的执行命令所在位置添加到PATH目录，如下</p>
+
+<pre><code class="language-sh">export PATH=&quot;${KREW_ROOT:-$HOME/.krew}/bin:$PATH&quot;
+</code></pre>
+
+<p>其实上面的工作很简单，就是从github的release上下载kubectl-krew的压缩包并解压，然后放置到PATH目录中。这样执行kubectl krew的时候就等于是执行kubectl-krew了，kubectl-krew内部记录了索引，会对plugin的整个生命周期进行管理，比如list search install uninstall等等操作，和brew的理念完全一致。然后通过kubectl krew install就可以安装需要的插件了<em>（有些插件krew安装的版本比github上还新，有些不太理解）</em></p>
+
+<p>下面罗列出一些使用示例：</p>
+
+<pre><code class="language-sh">[root@dodia1 ~]# kubectl krew list
+PLUGIN  VERSION
+krew    v0.3.4
+</code></pre>
+
+<pre><code class="language-sh">[root@dodia1 ~]# kubectl krew search debug
+NAME         DESCRIPTION                                      INSTALLED
+debug        Attach ephemeral debug container to running pod  no
+debug-shell  Create pod with interactive kube-shell.          no
+</code></pre>
+
+<pre><code class="language-sh">[root@dodia1 ~]# kubectl krew install doctor
+Updated the local copy of plugin index.
+  New plugins available:
+    * rolesum
+Installing plugin: doctor
+Installed plugin: doctor
+\
+ | Use this plugin:
+ |      kubectl doctor
+ | Documentation:
+ |      https://github.com/emirozer/kubectl-doctor
+ | Caveats:
+ | \
+ |  | This plugin needs higher privileges on core API group.
+ |  | Potentially a ClusterRole that can get cluster-scoped resources.
+ |  | Such as nodes / all namespaces etc.
+ | /
+/
+WARNING: You installed plugin &quot;doctor&quot; from the krew-index plugin repository.
+   These plugins are not audited for security by the Krew maintainers.
+   Run them at your own risk.
+</code></pre>
+
+<h2 id="kubectl-debug介绍">kubectl-debug介绍</h2>
+
+<p>这个插件经常使用，用于调试k8s环境中的pod，github里这样的项目有好几个，我现在使用的是下面这个项目</p>
+
+<p><a href="https://github.com/aylei/kubectl-debug">https://github.com/aylei/kubectl-debug</a></p>
+
+<p>其余的项目包括：<a href="https://github.com/verb/kubectl-debug">https://github.com/verb/kubectl-debug</a></p>
+
+<p>其官网描述如下：</p>
+
+<blockquote>
+<p>kubectl-debug 是一个简单的 kubectl 插件, 能够帮助你便捷地进行 Kubernetes 上的 Pod 排障诊断. 背后做的事情很简单: 在运行中的 Pod 上额外起一个新容器, 并将新容器加入到目标容器的 pid, network, user 以及 ipc namespace 中, 这时我们就可以在新容器中直接用 netstat, tcpdump 这些熟悉的工具来解决问题了, 而旧容器可以保持最小化, 不需要预装任何额外的排障工具.</p>
+</blockquote>
+
+<h2 id="kubect-pod-dive介绍">kubect-pod_dive介绍</h2>
+
+<p>另一个我常用的插件就是pod_dive了，这个插件可以直接显示pod资源的树状图</p>
+
+<pre><code class="language-sh">Air-for-Dodia:~ wenjuntang$ kubectl pod_dive test-nginx-nginx-6c75c78459-5qdl8
+[node]      node3 [ready]
+[namespace]  ├─┬ default
+[type]       │ └─┬ replicaset [deployment]
+[workload]   │   └─┬ test-nginx-nginx-6c75c78459 [1 replica]
+[pod]        │     └─┬ test-nginx-nginx-6c75c78459-5qdl8 [running]
+[containers] │       └── nginx [0 restarts]
+            ... 
+[siblings]   ├── csi-rbdplugin-k8dk6
+             ├── csi-rbdplugin-provisioner-844f8568b4-gjw9s
+             ├── csi-rbdplugin-provisioner-844f8568b4-smk2f
+             ├── cephfs-provisioner-75545979d8-b25nd
+             ├── debug-agent-zzb87
+             ├── harbor1-harbor-chartmuseum-557c74b5cb-c8gfg
+             ├── harbor1-harbor-core-76b687cd7b-8q99p
+             ├── harbor1-harbor-notary-server-8888898c9-tf52w
+             ├── harbor1-harbor-registry-567468c485-pbl7g
+             ├── jira7-1
+             ├── jira7-recovered-1
+             ├── jira7-recovered-4
+             ├── jira7-recovered-6
+             ├── testmemcache-memcached-1
+             ├── tomcatest1-85b9df7d58-77xwt
+             ├── wangxi-deployment-deployment-1-wangxi-deployment-6c94cd59-dpwpg
+             ├── wx-etcd1-1
+             ├── ingress-nginx-controller-wg9cl
+             ├── appmanager-harbor-79ff98fcd4-kmtkq
+             ├── auth-server-kubedb-recovered-0
+             ├── calico-node-85dpd
+             ├── coredns-8956959d7-kxwfn
+             ├── dns-autoscaler-6db59696c5-vh2cd
+             ├── dnsmasq-outer-autoscaler-5cf4cdc5f4-qgqw9
+             ├── dnsmasq-outer-cf8966c78-rv5hd
+             ├── kube-apiserver-node3
+             ├── kube-controller-manager-node3
+             ├── kube-proxy-zhvcn
+             ├── kube-scheduler-node3
+             ├── local-volume-provisioner-p9nbv
+             ├── mkdir-zfbqr
+             ├── nodelocaldns-n7fp7
+             ├── elasticsearch-logging-2
+             ├── fluentd-es-v2.8.0-vvjtm
+             ├── alertmanager-6cbf699fbd-spmz2
+             ├── ceph-exporter-dd9658889-m5m8t
+             ├── kube-state-metrics-deployment-54d88bbcfc-rdwj4
+             ├── monitoring-disk-4mhgw
+             ├── monitoring-influxdb-cc5fdb46-lwhdr
+             ├── monitoring-smart-rdwsn
+             ├── node-directory-size-metrics-8mk76
+             ├── prometheus-node-exporter-svfn8
+             ├── remote-storage-adapter-dfb9557d6-g72x2
+             └── registry-proxy-nxvs9
+</code></pre>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="https://dodiadodia.github.io/" style="background-image: url(/images/logo.png)"><span class="hidden">dodia's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="https://dodiadodia.github.io/">dodia</a></h4>
+  
+  <p>Dodia&#39;s Bio</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Peking, China</span>
+    <span class="author-link icon-link"><a href="https://dodiadodia.github.io">https://dodiadodia.github.io</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Kube%20Plugin&nbsp;-&nbsp;Dodia%27s%20Blog&amp;url=https%3a%2f%2fdodiadodia.github.io%2fpost%2fkube-plugin%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fdodiadodia.github.io%2fpost%2fkube-plugin%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fdodiadodia.github.io%2fpost%2fkube-plugin%2f&amp;description=Kube%20Plugin"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fdodiadodia.github.io%2fpost%2fkube-plugin%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "https:\/\/dodiadodia.github.io\/post\/kube-plugin\/";  
+this.page.identifier = "https:\/\/dodiadodia.github.io\/post\/kube-plugin\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://dodia.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="https://dodiadodia.github.io/post/certbot/">
+          <section class="post">
+              <h2>Certbot</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Dodia&#39;s Blog</a> All rights reserved - 2020</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://dodiadodia.github.io/js/jquery.js"></script>
+    <script type="text/javascript" src="https://dodiadodia.github.io/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://dodiadodia.github.io/js/index.js"></script>
+    
+</body>
+</html>
+
